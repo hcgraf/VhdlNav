@@ -240,9 +240,10 @@ function! s:VhdlNav_Highlight()
         " Add in the number of lines taken up by the header lines
         let linenr=i+s:HeaderLength
         " Turn on highlighting
-        exe 'hi HL_HiCurLine ctermfg=blue ctermbg=cyan guifg=blue guibg=cyan'
+        "exe 'hi HL_HiCurLine ctermfg=blue ctermbg=cyan guifg=blue guibg=cyan'
         " Match the line number determine to get it hightlighted
-        exe 'match ' . "HL_HiCurLine".' /\%'.linenr.'l.'
+        "exe 'match ' . "HL_HiCurLine".' /\%'.linenr.'l./'
+        exe 'match ' . "Search".' /\%'.linenr.'l./'
 endfunction
         
 " Define a function to enter the data from the lists into the VhdlNav window
