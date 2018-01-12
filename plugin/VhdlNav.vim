@@ -43,9 +43,11 @@ let s:keywords_{0} = '^\s*--[#*\-+=]\{18}'
 let s:keywords_{1} = '\<component\>'
 let s:keywords_{2} = '\<entity\>'
 let s:keywords_{3} = '\<process\>'
+let s:keywords_{4} = '\<configuration\>'
+let s:keywords_{5} = '^\s*\i\+\s*:\s*\i\+\s*\(generic.*\|port.*\|--.*\)\?$'
 
 " Make sure to update the count with the highest keywords number in the list above
-let s:keywords_cnt = 3
+let s:keywords_cnt = 5
 
 
 "----------------------------------------------------------
@@ -300,7 +302,7 @@ function! s:VhdlNav_CreateList()
                         " with actual text.  Or, find a line that is blank.
                         " Or, find a line that doesn't start with a comment
                         let curn = curn + 1
-                        while getline(curn) !~ '^\s*--\s*[a-zA-Z0-9]\S\+' && 
+                        while getline(curn) !~ '^\s*--.*[a-zA-Z0-9]\+' && 
                                 \ nextnonblank(curn) == curn && 
                                 \ getline(curn) !~ '^\s*[a-zA-Z]'
                                 let curn = curn + 1
